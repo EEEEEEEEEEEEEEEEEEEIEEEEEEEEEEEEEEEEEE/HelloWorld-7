@@ -50,7 +50,7 @@ class HttpServer(object):
         print('listen the port %s' % self.port)
         while True:
             conn, addr = self.socket.accept()
-            print('connect from ', addr)
+            print('connect from1 ', addr)
             handle_client = Thread(target=self.handle_client, \
                                    args=(conn,))
             handle_client.start()
@@ -64,7 +64,7 @@ class HttpServer(object):
         request_lines = request.splitlines()
         # print(request_lines)
         # 获取请求行
-        request_line = request_lines[0].decode('utf-8')
+        request_line = request_lines[0].decode()
         print('请求', request_line)
 
         # 向webframe发送

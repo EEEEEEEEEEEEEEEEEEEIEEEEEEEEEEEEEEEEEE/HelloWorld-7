@@ -9,6 +9,7 @@ frame_ip = 'localhost'
 frame_port = 8888
 
 STATIC_DIR = './static'
+print(STATIC_DIR)
 #终端输入，只在linux下可使用
 # if len(sys.argv) < 3:
 #     exit()
@@ -83,13 +84,14 @@ class Application(object):
         else:
             get_file = STATIC_DIR + path_info
         try:
-            fd = open(get_file)
+            fd = open(get_file,encoding='utf-8')
+            print(fd)
         except IOError:
             response = '404'
         else:
             response = fd.read()
-
-        return response
+        finally:
+            return response
     def get_date(self,path_info):
         for url,func in urls:
             if path_info == url:
